@@ -1,216 +1,258 @@
-# Streamlit dependencies
+# Importing Streamlit and other essential libraries
 import streamlit as st
 import joblib
 import os
-
-# Data dependencies
 import pandas as pd
 from PIL import Image
 
-# Define file paths for models and vectorizer
-streamlit_dir = os.path.dirname(__file__)
-tfidf_vectorizer_path = os.path.join(streamlit_dir, 'tfidf_vectorizer.pkl')
-lr_model_path = os.path.join(streamlit_dir, 'lr_classifier_model.pkl')
-nb_model_path = os.path.join(streamlit_dir, 'nb_classifier_model.pkl')
-rf_model_path = os.path.join(streamlit_dir, 'rf_classifier_model.pkl')
-svm_model_path = os.path.join(streamlit_dir, 'svm_classifier_model.pkl')
-data_path = os.path.join(streamlit_dir, 'train.csv')
-wordcloud_path = os.path.join(streamlit_dir, 'wordcloud_by_category.png')
-imbalanced_distribution_path = os.path.join(streamlit_dir, 'imbalanced_distribution.png')
-balanced_class_category_path = os.path.join(streamlit_dir, 'balanced_class_category.png')
-stone_image_path = os.path.join(streamlit_dir, 'stone.png')
-screenshot_image_path = os.path.join(streamlit_dir, 'Screenshot 2024-07-04 203832.png')
+# File paths for models and vectorizer
+base_dir = os.path.dirname(__file__)
+paths = {
+    "tfidf_vectorizer": os.path.join(base_dir, 'models', 'tfidf_vectorizer.pkl'),
+    "lr_model": os.path.join(base_dir, 'models', 'lr_classifier_model.pkl'),
+    "nb_model": os.path.join(base_dir, 'models', 'nb_classifier_model.pkl'),
+    "rf_model": os.path.join(base_dir, 'models', 'rf_classifier_model.pkl'),
+    "svm_model": os.path.join(base_dir, 'models', 'svm_classifier_model.pkl'),
+    "data": os.path.join(base_dir, 'data', 'train.csv'),
+    "logo_image": os.path.join(base_dir, 'images', 'Logo1.jpg'),
+    "new_wordcloud": os.path.join(base_dir, 'images', 'New word cloud.png'),
+    "balanced_class_dist": os.path.join(base_dir, 'images', 'Balanced Class distribution.png'),
+    "class_dist": os.path.join(base_dir, 'images', 'Class distribution.png'),
+    "announcement_image": os.path.join(base_dir, 'images', 'announcement-article-articles-copy-coverage.jpg'),
+    "f1_scores": os.path.join(base_dir, 'images', 'F1 Scores.png'),
+    "model_evaluation": os.path.join(base_dir, 'images', 'Model Evaluation.png'),
+    "correlation_matrix": os.path.join(base_dir, 'images', 'Correlation Matrix.png'),
+    "training_time": os.path.join(base_dir, 'images', 'Training time.png')
+}
 
-# Load your vectorizer and models
-tfidf_vectorizer = joblib.load(tfidf_vectorizer_path)
-lr_model = joblib.load(lr_model_path)
-nb_model = joblib.load(nb_model_path)
-rf_model = joblib.load(rf_model_path)
-svm_model = joblib.load(svm_model_path)
+# Loading models and vectorizer
+vectorizer = joblib.load(paths["tfidf_vectorizer"])
+models = {
+    "Logistic Regression": joblib.load(paths["lr_model"]),
+    "Naive Bayes": joblib.load(paths["nb_model"]),
+    "Random Forest": joblib.load(paths["rf_model"]),
+    "Support Vector Machine": joblib.load(paths["svm_model"]),
+}
 
-# Load your training data
-data = pd.read_csv(data_path)
-
-# Main function to build the Streamlit app
 def main():
-    """News Classifier App with Streamlit """
+    """Streamlit News Classification App"""
 
-    # Creates a main title and subheader on your page -
-    # these are static across all pages
-    st.title("News Classifier")
-    st.subheader("Analyzing news articles")
+    st.title("News Classifier Application")
+    st.subheader("A Comprehensive Tool for News Article Categorization")
 
-    # Sidebar navigation tip in green
     st.sidebar.markdown(
         """
-        <div class="sidebar-section" style="background-color:#28a745;padding:10px;border-radius:10px;">
+        <div style="background-color:#28a745;padding:10px;border-radius:10px;">
             <p style="color:white;"><b>Navigation Tip:</b></p>
-            <p style="color:white;">Click the dropdown menu above to navigate between pages.</p>
+            <p style="color:white;">Use the dropdown menu to switch between sections.</p>
         </div>
-        """,
-        unsafe_allow_html=True
-    )
+        """, unsafe_allow_html=True)
 
-    # Sidebar with selection box for different pages
-    options = ["Home", "Information", "EDA", "Prediction", "Feedback", "About Us"]
-    selection = st.sidebar.selectbox("Choose Option", options)
+    pages = ["Home", "Information", "EDA", "Prediction", "Feedback", "About Us"]
+    choice = st.sidebar.selectbox("Navigate to", pages)
 
-    # Building out the "Home" page
-    if selection == "Home":
+    if choice == "Home":
         st.info("Welcome to the News Classifier App!")
-        
         st.markdown(
             """
-            This application is designed to classify news articles into categories such as sports, education, entertainment, business, and technology using various machine learning models.
+            This application classifies news articles into various categories like sports, education, entertainment, business, and technology using machine
+            learning models.
+            Use the sidebar to explore different sections including Information, EDA, Prediction, Feedback, and About Us.
             """
         )
-        
-        st.markdown(
-            """
-            Use the sidebar to navigate to different sections of the application, including Information, EDA (Exploratory Data Analysis), Prediction, Feedback, and About Us.
-            """
-        )
-        
-        # Displaying the screenshot image below the texts
-        screenshot_image = Image.open(screenshot_image_path)
-        st.image(screenshot_image, caption='Welcome to the News Classifier App!')
+        st.image(Image.open(paths["announcement_image"]), caption='Welcome to the News Classifier App!')
 
-    # Building out the "Information" page
-    if selection == "Information":
+    elif choice == "Information":
         st.info("General Information")
-
         st.markdown(
             """
-            The purpose of the classification models is to read articles and classify them into categories, which are sports, education, entertainment, business, and technology.
+            This tool classifies news articles into categories: sports, education, entertainment, business, and technology.
             
-            ### Model Details:
-            
-            The application makes use of various models which are Multinomial Naive Bayes, Random Forest, Logistic Regression, and Support Vector Machine (SVM).
+            ### Models Utilized:
+            - **Multinomial Naive Bayes:** Probabilistic text classification model.
+            - **Random Forest:** Ensemble learning method for enhanced accuracy.
+            - **Logistic Regression:** Statistical model for binary/multi-class classification.
+            - **Support Vector Machine (SVM):** Model for finding the optimal hyperplane in classification.
+            """
+        )
+
+    elif choice == "EDA":
+        st.info("Exploratory Data Analysis")
+        st.markdown(
+            """
+            ### Data Overview:
+            - **Distribution Analysis:** 
+              - **Category Distribution:** Explore the distribution of news articles across different categories to understand the prevalence and imbalance of
+              categories in the dataset.
+              - **Word Frequency Analysis:** Identify the most common words and phrases used in each category, which helps in understanding the content and
+              themes prevalent in different types of news.
+              - **Length Analysis:** Examine the length of articles in terms of word count and character count across different categories to identify any
+              notable differences.
+
+            - **Labeling and Dataset Characteristics:** 
+              - **Labeled Dataset:** The dataset consists of news articles labeled into categories such as sports, education, entertainment, business, and
+              technology. These labels are essential for training supervised machine learning models.
+              - **Source and Timeframe:** Information about the source of the dataset and the timeframe over which the articles were collected can provide
+              context for the analysis.
+
+            - **Exploratory Data Analysis (EDA):**
+              - **Pattern Identification:** Use EDA to uncover patterns, trends, and anomalies in the data that can inform feature engineering and model
+              selection.
+              - **Bias Detection:** Detect and analyze biases in the dataset, such as over-representation or under-representation of certain categories, which
+              can impact model performance.
+              - **Correlation Analysis:** Investigate correlations between different features (e.g., publication date, article length) and the target
+              categories.
+              - **Sentiment Analysis:** Perform sentiment analysis to understand the emotional tone of articles across different categories and how it may
+              affect classification.
+              - **Visualization:** Use visualizations such as histograms, bar charts, word clouds, and box plots to present the data intuitively and
+              insightfully.
+              - **Missing Values:** Check for missing values and understand their distribution and impact on the dataset.
+
+            - **Model Development:**
+              - **Feature Selection:** EDA helps in selecting the most relevant features for model development by identifying important patterns and
+              correlations.
+              - **Data Cleaning:** Identify and address any data quality issues such as duplicates, inconsistencies, or errors in the dataset.
+              - **Balancing the Dataset:** Techniques such as oversampling, undersampling, or using synthetic data generation (e.g., SMOTE) to balance the
+              dataset and improve model performance.
+
+            - **Model Evaluation:**
+              - **F1 Scores:** Evaluate the performance of different models using F1 scores, which provide a balance between precision and recall. F1 scores
+              are particularly useful for imbalanced datasets.
+              - **Confusion Matrix:** Analyze the confusion matrix for each model to understand the distribution of true positives, false positives, true
+              negatives, and false negatives.
+              - **ROC and AUC:** Examine the Receiver Operating Characteristic (ROC) curve and Area Under the Curve (AUC) for each model to evaluate their
+              discriminatory power.
+              - **Precision-Recall Curve:** Investigate the precision-recall curve to assess the trade-off between precision and recall at different threshold
+              levels.
+
+            - **Correlation Matrix:**
+              - **Feature Correlation:** Generate and analyze the correlation matrix to understand the relationships between different features. This helps in
+              identifying multicollinearity and selecting features that contribute the most to the model's performance.
+
+            - **Training Time:**
+              - **Model Training Duration:** Measure and compare the training time for different models to understand their computational efficiency and
+              scalability.
+              - **Optimization:** Explore optimization techniques to reduce training time without compromising model accuracy, such as using faster
+              algorithms, reducing data dimensionality, or parallelizing computations.
             """
         )
         
-        # Adding Documentation section
-        st.markdown(
-            """
-            ### Documentation:
-            
-            - **Multinomial Naive Bayes:** A probabilistic model based on Bayes' theorem, used for text classification.
-            - **Random Forest:** An ensemble learning method using multiple decision trees for improved accuracy.
-            - **Logistic Regression:** A statistical model for binary classification, extended for multi-class classification.
-            - **Support Vector Machine (SVM):** A supervised learning model for classification by finding the optimal hyperplane.
-            """
-        )
-
-    # Building out the "EDA" page
-    if selection == "EDA":
-        st.info("Exploratory Data Analysis")
-
-        st.markdown(
-            """
-            Overview and Introduction:
-
-            - The purpose of the Exploratory Data Analysis (EDA) is to examine how news articles are distributed among different categories: sports, education, entertainment, business, and technology.
-            - The dataset used for this analysis includes labeled articles that train our models to classify text into these categories.
-            - Understanding the distribution of data helps in identifying patterns and potential biases, which are critical for developing accurate classification models.
-            """
-        )
-
-        # Displaying the imbalanced distribution image
         st.subheader("Imbalanced Class Distribution")
-        imbalanced_image = Image.open(imbalanced_distribution_path)
-        st.image(imbalanced_image, caption='Imbalanced Distribution of Articles by Category')
-
-        # Button to view balanced data
+        st.image(Image.open(paths["class_dist"]), caption='Distribution of Articles by Category')
+        
         if st.button("View Balanced Data"):
-            st.markdown(
-                """
-                To address the imbalance, the dataset was resampled and these are the results:
-                """
-            )
+            st.image(Image.open(paths["balanced_class_dist"]), caption='Balanced Distribution of Articles by Category')
 
-            # Displaying the balanced class category image
-            balanced_image = Image.open(balanced_class_category_path)
-            st.image(balanced_image, caption='Balanced Distribution of Articles by Category')
+        st.subheader("Word Cloud by Category")
+        st.image(Image.open(paths["new_wordcloud"]), caption='Most Used Words in Each Category')
 
-        # Displaying word cloud image
-        st.subheader("The Most Used Words by Category")
-        wordcloud_image = Image.open(wordcloud_path)
-        st.image(wordcloud_image, caption='Word Cloud by Category')
+        if st.button("View F1 Scores"):
+            st.image(Image.open(paths["f1_scores"]), caption='F1 Scores for Different Models')
 
-    # Building out the prediction page
-    if selection == "Prediction":
-        st.info("Prediction with ML Models")
+        if st.button("View Model Evaluation"):
+            st.image(Image.open(paths["model_evaluation"]), caption='Model Evaluation Metrics')
 
-        # Sidebar to select model
-        model_options = {
-            "Logistic Regression": lr_model,
-            "Naive Bayes": nb_model,
-            "Random Forest": rf_model,
-            "SVM": svm_model,
-        }
+        if st.button("View Correlation Matrix"):
+            st.image(Image.open(paths["correlation_matrix"]), caption='Correlation Matrix of Features')
 
-        selected_model = st.sidebar.radio("Select Model", list(model_options.keys()))
+        if st.button("View Training Time"):
+            st.image(Image.open(paths["training_time"]), caption='Training Time for Different Models')
 
-        # Store selected model in session state
-        st.session_state.selected_model = selected_model
+    elif choice == "Prediction":
+        st.info("Make Predictions")
+        model_choice = st.sidebar.radio("Select Model", list(models.keys()))
 
-        # Display the selected model in green
-        for model_name in model_options:
-            if st.session_state.selected_model == model_name:
-                st.sidebar.markdown(f'<p style="color:green;">{model_name}</p>', unsafe_allow_html=True)
-            else:
-                st.sidebar.markdown(f'<p>{model_name}</p>', unsafe_allow_html=True)
+        st.session_state.selected_model = model_choice
+        selected_model = models[model_choice]
 
-        # Creating a text box for user input
-        news_text = st.text_area("Type a text to classify", "")
-
+        news_text = st.text_area("Enter news text for classification", "")
         if st.button("Classify"):
-            # Transforming user input with vectorizer
-            vect_text = tfidf_vectorizer.transform([news_text]).toarray()
+            vect_text = vectorizer.transform([news_text])
+            prediction = selected_model.predict(vect_text)[0]
+            st.success(f"The article is categorized as: {prediction}")
 
-            # Make prediction with the selected model
-            predictor = model_options[selected_model]
-            prediction = predictor.predict(vect_text)[0]
-
-            # Display prediction
-            st.success(f"Text Categorized as: {prediction}")
-
-    # Building out the Feedback page
-    if selection == "Feedback":
+    elif choice == "Feedback":
         st.info("Feedback")
-
         st.markdown(
             """
-            We value your feedback! Please provide your comments and suggestions to help us improve this application.
+            ### We Value Your Feedback
+            Your feedback is essential for us to improve this application. Please share your comments, suggestions, and any issues you've encountered. Whether
+            it's about the user interface, functionality, or any new features you'd like to see, we are eager to hear from you.
+            
+            #### What You Can Provide Feedback On:
+            - **User Experience:** How easy and intuitive is it to navigate the app? Are there any difficulties or confusions?
+            - **Performance:** Is the app running smoothly? Have you experienced any lags or crashes?
+            - **Features:** Are there any features you love or any you think are missing? How can we enhance the current features?
+            - **Accuracy:** Are the predictions accurate? How well do the models categorize the news articles?
+
+            We appreciate your feedback and are committed to making this app better for you.
+
+            **Your Feedback:**
             """
         )
-
-        feedback_text = st.text_area("Your Feedback", "")
+        feedback = st.text_area("Your Feedback", "")
         if st.button("Submit Feedback"):
-            st.success("Thank you for your feedback!")
+            st.success("Thank you for your feedback! We will use it to improve the application.")
 
-    # Building out the About Us page
-    if selection == "About Us":
+    elif choice == "About Us":
         st.info("About Us")
-
-        # Displaying the stone background image with reduced size
-        stone_image = Image.open(stone_image_path)
-        st.image(stone_image, use_column_width=False, width=300)
-
+        st.image(Image.open(paths["logo_image"]), width=300)
         st.markdown(
             """
-            This application was developed by Team_MM1, a group of data science students from the ExploreAI academy under the supervised classification sprint [Team_MM1] as a project to classify news articles into categories using machine learning models. It demonstrates the use of various classification algorithms to analyze and categorize text data.
+            ## About Us
 
-            For more information or inquiries, please contact us at mm1_classification@sandtech.co.za.
+            This application was developed by Team EG-3 from ExploreAI Academy. It leverages machine learning models to classify news articles into various categories such as sports, education, entertainment, business, and technology.
 
-            ---
+            ### New Mission
+            In today's fast-paced digital landscape, the ability to effectively categorize and deliver news content is crucial for enhancing user experience and operational efficiency in news outlets. As data science consultants for a prominent news organization, our team has undertaken the task of developing robust classification models using advanced machine learning techniques. This project aims to demonstrate the application of natural language processing (NLP) methodologies through an end-to-end workflow, leveraging Python and Streamlit for model deployment.
 
-            **Our Mission:**
+            ### Project Overview
+            The News Classifier Application is a comprehensive tool designed to provide accurate categorization of news articles. Our goal is to make it easier for users to quickly identify the category of any given news article, enhancing the overall news consumption experience.
 
-            "We are here to innovate Africa and the world through data-driven insights, one article at a time."
+            ### Contact Information
+            For more information or inquiries, feel free to contact us at: **eg3_classification@sandtech.co.za**
+
+            ### Supervisors
+            - **Marc Marais**: [Mmarais@sandtech.com](mailto:Mmarais@sandtech.com)
+            - **Oladare Adekunle**: [Oadekunle@sandtech.com](mailto:Oadekunle@sandtech.com)
+            - **Ereshia Gabier**: [Egabier@sandtech.com](mailto:Egabier@sandtech.com)
+
+            ### Team Members
+            - **Mieke Spaans**: Project Manager
+            - **Sinawo Londa**: Team Lead
+            - **Pfarelo Ramunasi**: GitHub Manager
+            - **Coceka Keto**: Data Scientist
+            - **Simphiwe Khoza**: Data Scientist
+            - **Zakhele Mabuza**: Data Scientist
+
+            ### Team Roles and Contributions
+            - **Mieke Spaans**: Ensured the project was on track and met deadlines, coordinated team activities, and managed communications.
+            - **Sinawo Londa**: Led the team, provided guidance, and ensured the successful execution of project goals.
+            - **Pfarelo Ramunasi**: Managed the GitHub repository, ensured version control, and handled code integration.
+            - **Coceka Keto**: Focused on data cleaning, preprocessing, and initial exploratory data analysis.
+            - **Simphiwe Khoza**: Developed machine learning models and evaluated their performance.
+            - **Zakhele Mabuza**: Worked on the deployment of the application, created visualizations, and handled backend integration.
+
+            ### Acknowledgments
+            We extend our gratitude to our supervisors for their invaluable guidance and support throughout this project. Special thanks to ExploreAI Academy
+            for providing us with this opportunity to apply our skills in a real-world scenario.
+
+            ### Conclusion
+            We achieved our goal and created a transformative tool designed to enhance the way you interact with the world of news. It prioritizes your
+            preferences and curates content that truly matters to you. We are redefining the news consumption experience.
+
+            Our commitment to personalization, innovation, and user satisfaction ensures that you stay informed in a way that is both meaningful and enjoyable.
+
+            **Join Us** in our mission to bring innovative data solutions to the world. Follow our journey and contribute to the future of news classification
+            technology.
+
+            ### Additional Information
+            For more details about our project and future updates, visit our GitHub repository or contact any of our team members.
+
+            Together, we are committed to driving innovation and making a positive impact through data science and technology.
             """
         )
-
-# Execute the main function
-if __name__ == '__main__':
+        
+if __name__ == "__main__":
     main()
+
