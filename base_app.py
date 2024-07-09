@@ -6,7 +6,6 @@ import pandas as pd
 from PIL import Image
 
 # File paths for models and vectorizer
-base_dir = r"C:\Users\Zakhele\Downloads\Compressed\StreamlitApp\Main2"
 paths = {
     "tfidf_vectorizer": os.path.join(base_dir, 'tfidf_vectorizer.pkl'),
     "lr_model": os.path.join(base_dir, 'lr_classifier_model.pkl'),
