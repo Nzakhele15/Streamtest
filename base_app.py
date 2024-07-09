@@ -1,38 +1,3 @@
-import streamlit as st
-import joblib
-import os
-import pandas as pd
-from PIL import Image
-
-# File paths for models and images
-base_dir = os.path.dirname(__file__)
-paths = {
-    "tfidf_vectorizer": os.path.join(base_dir, 'models', 'tfidf_vectorizer.pkl'),
-    "lr_model": os.path.join(base_dir, 'models', 'lr_classifier_model.pkl'),
-    "nb_model": os.path.join(base_dir, 'models', 'nb_classifier_model.pkl'),
-    "rf_model": os.path.join(base_dir, 'models', 'rf_classifier_model.pkl'),
-    "svm_model": os.path.join(base_dir, 'models', 'svm_classifier_model.pkl'),
-    "data": os.path.join(base_dir, 'data', 'train.csv'),
-    "logo_image": os.path.join(base_dir, 'images', 'Logo1.jpg'),
-    "new_word_cloud": os.path.join(base_dir, 'images', 'New word cloud.png'),
-    "balanced_class_dist": os.path.join(base_dir, 'images', 'Balanced Class distribution.png'),
-    "class_dist": os.path.join(base_dir, 'images', 'Class distribution.png'),
-    "announcement_image": os.path.join(base_dir, 'images', 'announcement-article-articles-copy-coverage.jpg'),
-    "f1_scores": os.path.join(base_dir, 'images', 'F1 Scores.png'),
-    "model_evaluation": os.path.join(base_dir, 'images', 'Model Evaluation.png'),
-    "correlation_matrix": os.path.join(base_dir, 'images', 'Correlation Matrix.png'),
-    "training_time": os.path.join(base_dir, 'images', 'Training time.png')
-}
-
-# Loading models and vectorizer
-vectorizer = joblib.load(paths["tfidf_vectorizer"])
-models = {
-    "Logistic Regression": joblib.load(paths["lr_model"]),
-    "Naive Bayes": joblib.load(paths["nb_model"]),
-    "Random Forest": joblib.load(paths["rf_model"]),
-    "Support Vector Machine": joblib.load(paths["svm_model"]),
-}
-
 def main():
     """Streamlit News Classification App"""
 
@@ -118,9 +83,12 @@ def main():
 
         news_text = st.text_area("Enter news text for classification", "")
         if st.button("Classify"):
-            vect_text = vectorizer.transform([news_text])
-            prediction = selected_model.predict(vect_text)[0]
-            st.success(f"The article is categorized as: {prediction}")
+            try:
+                vect_text = vectorizer.transform([news_text])
+                prediction = selected_model.predict(vect_text)[0]
+                st.success(f"The article is categorized as: {prediction}")
+            except Exception as e:
+                st.error(f"Error: {e}")
 
     elif choice == "Feedback":
         st.info("Feedback")
