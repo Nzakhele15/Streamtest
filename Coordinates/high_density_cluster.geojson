@@ -1,0 +1,13 @@
+{
+"type": "FeatureCollection",
+"name": "high_density_cluster",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "longitude": 3321232.9080269798, "latitude": -2848968.4120326601, "dataset": "high_density", "color": "#541829" }, "geometry": { "type": "Point", "coordinates": [ 3321232.908026979770511, -2848968.412032660096884 ] } },
+{ "type": "Feature", "properties": { "longitude": 3156791.6274387301, "latitude": -3551905.3107687002, "dataset": "high_density", "color": "#541829" }, "geometry": { "type": "Point", "coordinates": [ 3156791.627438730094582, -3551905.31076870020479 ] } },
+{ "type": "Feature", "properties": { "longitude": 2074566.76714569, "latitude": -4028343.4153658501, "dataset": "high_density", "color": "#541829" }, "geometry": { "type": "Point", "coordinates": [ 2074566.767145690042526, -4028343.415365850087255 ] } },
+{ "type": "Feature", "properties": { "longitude": 3128398.1476869299, "latitude": -3871617.0658603301, "dataset": "high_density", "color": "#541829" }, "geometry": { "type": "Point", "coordinates": [ 3128398.14768692990765, -3871617.06586033012718 ] } },
+{ "type": "Feature", "properties": { "longitude": 3123104.06495133, "latitude": -3020798.7580632502, "dataset": "high_density", "color": "#541829" }, "geometry": { "type": "Point", "coordinates": [ 3123104.064951329957694, -3020798.758063250221312 ] } },
+{ "type": "Feature", "properties": { "longitude": 2075567.3978356801, "latitude": -4022590.81637032, "dataset": "high_density", "color": "#541829" }, "geometry": { "type": "Point", "coordinates": [ 2075567.397835680050775, -4022590.816370320040733 ] } }
+]
+}

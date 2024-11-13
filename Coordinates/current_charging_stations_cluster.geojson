@@ -1,0 +1,31 @@
+{
+"type": "FeatureCollection",
+"name": "current_charging_stations_cluster",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "longitude": 31.02015796, "latitude": -29.76983275, "dataset": "current_charging_stations", "color": "#1ab83e" }, "geometry": { "type": "Point", "coordinates": [ 31.02015796, -29.76983275 ] } },
+{ "type": "Feature", "properties": { "longitude": 19.300508, "latitude": -34.42495587, "dataset": "current_charging_stations", "color": "#1ab83e" }, "geometry": { "type": "Point", "coordinates": [ 19.300508, -34.42495587 ] } },
+{ "type": "Feature", "properties": { "longitude": 28.03205189, "latitude": -26.10280278, "dataset": "current_charging_stations", "color": "#1ab83e" }, "geometry": { "type": "Point", "coordinates": [ 28.03205189, -26.10280278 ] } },
+{ "type": "Feature", "properties": { "longitude": 25.47085767, "latitude": -33.98972742, "dataset": "current_charging_stations", "color": "#1ab83e" }, "geometry": { "type": "Point", "coordinates": [ 25.47085767, -33.98972742 ] } },
+{ "type": "Feature", "properties": { "longitude": 26.21699914, "latitude": -29.09663171, "dataset": "current_charging_stations", "color": "#1ab83e" }, "geometry": { "type": "Point", "coordinates": [ 26.21699914, -29.09663171 ] } },
+{ "type": "Feature", "properties": { "longitude": 22.37661875, "latitude": -34.01553675, "dataset": "current_charging_stations", "color": "#1ab83e" }, "geometry": { "type": "Point", "coordinates": [ 22.37661875, -34.01553675 ] } },
+{ "type": "Feature", "properties": { "longitude": 17.079212, "latitude": -22.577687, "dataset": "current_charging_stations", "color": "#1ab83e" }, "geometry": { "type": "Point", "coordinates": [ 17.079212, -22.577687 ] } },
+{ "type": "Feature", "properties": { "longitude": 18.91427335, "latitude": -33.90796013, "dataset": "current_charging_stations", "color": "#1ab83e" }, "geometry": { "type": "Point", "coordinates": [ 18.91427335, -33.90796013 ] } },
+{ "type": "Feature", "properties": { "longitude": 31.00160211, "latitude": -25.19898867, "dataset": "current_charging_stations", "color": "#1ab83e" }, "geometry": { "type": "Point", "coordinates": [ 31.00160211, -25.19898867 ] } },
+{ "type": "Feature", "properties": { "longitude": 24.4753105, "latitude": -31.45465, "dataset": "current_charging_stations", "color": "#1ab83e" }, "geometry": { "type": "Point", "coordinates": [ 24.4753105, -31.45465 ] } },
+{ "type": "Feature", "properties": { "longitude": 29.01969529, "latitude": -28.27124886, "dataset": "current_charging_stations", "color": "#1ab83e" }, "geometry": { "type": "Point", "coordinates": [ 29.01969529, -28.27124886 ] } },
+{ "type": "Feature", "properties": { "longitude": 28.8223245, "latitude": -31.513588, "dataset": "current_charging_stations", "color": "#1ab83e" }, "geometry": { "type": "Point", "coordinates": [ 28.8223245, -31.513588 ] } },
+{ "type": "Feature", "properties": { "longitude": 26.7750375, "latitude": -26.8280705, "dataset": "current_charging_stations", "color": "#1ab83e" }, "geometry": { "type": "Point", "coordinates": [ 26.7750375, -26.8280705 ] } },
+{ "type": "Feature", "properties": { "longitude": 23.16721957, "latitude": -34.02927971, "dataset": "current_charging_stations", "color": "#1ab83e" }, "geometry": { "type": "Point", "coordinates": [ 23.16721957, -34.02927971 ] } },
+{ "type": "Feature", "properties": { "longitude": 18.48980529, "latitude": -33.92732845, "dataset": "current_charging_stations", "color": "#1ab83e" }, "geometry": { "type": "Point", "coordinates": [ 18.48980529, -33.92732845 ] } },
+{ "type": "Feature", "properties": { "longitude": 30.11661244, "latitude": -29.50062711, "dataset": "current_charging_stations", "color": "#1ab83e" }, "geometry": { "type": "Point", "coordinates": [ 30.11661244, -29.50062711 ] } },
+{ "type": "Feature", "properties": { "longitude": 27.65753375, "latitude": -33.15132675, "dataset": "current_charging_stations", "color": "#1ab83e" }, "geometry": { "type": "Point", "coordinates": [ 27.65753375, -33.15132675 ] } },
+{ "type": "Feature", "properties": { "longitude": 28.2543883, "latitude": -25.79931741, "dataset": "current_charging_stations", "color": "#1ab83e" }, "geometry": { "type": "Point", "coordinates": [ 28.2543883, -25.79931741 ] } },
+{ "type": "Feature", "properties": { "longitude": 29.48333633, "latitude": -23.89153533, "dataset": "current_charging_stations", "color": "#1ab83e" }, "geometry": { "type": "Point", "coordinates": [ 29.48333633, -23.89153533 ] } },
+{ "type": "Feature", "properties": { "longitude": 18.731532, "latitude": -31.607922, "dataset": "current_charging_stations", "color": "#1ab83e" }, "geometry": { "type": "Point", "coordinates": [ 18.731532, -31.607922 ] } },
+{ "type": "Feature", "properties": { "longitude": 20.0413275, "latitude": -34.27020575, "dataset": "current_charging_stations", "color": "#1ab83e" }, "geometry": { "type": "Point", "coordinates": [ 20.0413275, -34.27020575 ] } },
+{ "type": "Feature", "properties": { "longitude": 30.0612048, "latitude": -25.7803848, "dataset": "current_charging_stations", "color": "#1ab83e" }, "geometry": { "type": "Point", "coordinates": [ 30.0612048, -25.7803848 ] } },
+{ "type": "Feature", "properties": { "longitude": 20.9048825, "latitude": -33.855712, "dataset": "current_charging_stations", "color": "#1ab83e" }, "geometry": { "type": "Point", "coordinates": [ 20.9048825, -33.855712 ] } },
+{ "type": "Feature", "properties": { "longitude": 22.5836425, "latitude": -32.350427, "dataset": "current_charging_stations", "color": "#1ab83e" }, "geometry": { "type": "Point", "coordinates": [ 22.5836425, -32.350427 ] } }
+]
+}
