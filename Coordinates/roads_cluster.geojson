@@ -1,0 +1,13 @@
+{
+"type": "FeatureCollection",
+"name": "roads_cluster",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "longitude": 28.04209258, "latitude": -26.19375262, "dataset": "roads", "color": "#5829d8" }, "geometry": { "type": "Point", "coordinates": [ 28.04209258, -26.19375262 ] } },
+{ "type": "Feature", "properties": { "longitude": 19.88019605, "latitude": -33.80975536, "dataset": "roads", "color": "#5829d8" }, "geometry": { "type": "Point", "coordinates": [ 19.88019605, -33.80975536 ] } },
+{ "type": "Feature", "properties": { "longitude": 27.36359469, "latitude": -31.49248341, "dataset": "roads", "color": "#5829d8" }, "geometry": { "type": "Point", "coordinates": [ 27.36359469, -31.49248341 ] } },
+{ "type": "Feature", "properties": { "longitude": 25.4691139, "latitude": -33.80129012, "dataset": "roads", "color": "#5829d8" }, "geometry": { "type": "Point", "coordinates": [ 25.4691139, -33.80129012 ] } },
+{ "type": "Feature", "properties": { "longitude": 28.9137115, "latitude": -23.8934772, "dataset": "roads", "color": "#5829d8" }, "geometry": { "type": "Point", "coordinates": [ 28.9137115, -23.8934772 ] } },
+{ "type": "Feature", "properties": { "longitude": 27.51672713, "latitude": -25.74630537, "dataset": "roads", "color": "#5829d8" }, "geometry": { "type": "Point", "coordinates": [ 27.51672713, -25.74630537 ] } }
+]
+}

@@ -1,0 +1,12 @@
+{
+"type": "FeatureCollection",
+"name": "buildings",
+"features": [
+{ "type": "Feature", "properties": { "longitude": 18.39106378, "latitude": -33.91694282, "dataset": "buildings", "color": "#78b134" }, "geometry": { "type": "Point", "coordinates": [ 18.39106378, -33.91694282 ] } },
+{ "type": "Feature", "properties": { "longitude": 28.40928555, "latitude": -26.25573355, "dataset": "buildings", "color": "#78b134" }, "geometry": { "type": "Point", "coordinates": [ 28.40928555, -26.25573355 ] } },
+{ "type": "Feature", "properties": { "longitude": 28.15887654, "latitude": -32.33034274, "dataset": "buildings", "color": "#78b134" }, "geometry": { "type": "Point", "coordinates": [ 28.15887654, -32.33034274 ] } },
+{ "type": "Feature", "properties": { "longitude": 28.16147434, "latitude": -25.723682, "dataset": "buildings", "color": "#78b134" }, "geometry": { "type": "Point", "coordinates": [ 28.16147434, -25.723682 ] } },
+{ "type": "Feature", "properties": { "longitude": 28.00231919, "latitude": -26.17875108, "dataset": "buildings", "color": "#78b134" }, "geometry": { "type": "Point", "coordinates": [ 28.00231919, -26.17875108 ] } },
+{ "type": "Feature", "properties": { "longitude": 28.26997744, "latitude": -25.78320489, "dataset": "buildings", "color": "#78b134" }, "geometry": { "type": "Point", "coordinates": [ 28.26997744, -25.78320489 ] } }
+]
+}

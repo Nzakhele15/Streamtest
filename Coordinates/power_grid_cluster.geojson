@@ -1,0 +1,27 @@
+{
+"type": "FeatureCollection",
+"name": "power_grid_cluster",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "longitude": 31.45279813, "latitude": -29.09423623, "dataset": "power_grid", "color": "#23bea9" }, "geometry": { "type": "Point", "coordinates": [ 31.45279813, -29.09423623 ] } },
+{ "type": "Feature", "properties": { "longitude": 25.12245276, "latitude": -26.82426303, "dataset": "power_grid", "color": "#23bea9" }, "geometry": { "type": "Point", "coordinates": [ 25.12245276, -26.82426303 ] } },
+{ "type": "Feature", "properties": { "longitude": 18.85782126, "latitude": -33.71321724, "dataset": "power_grid", "color": "#23bea9" }, "geometry": { "type": "Point", "coordinates": [ 18.85782126, -33.71321724 ] } },
+{ "type": "Feature", "properties": { "longitude": 27.909108, "latitude": -25.83927243, "dataset": "power_grid", "color": "#23bea9" }, "geometry": { "type": "Point", "coordinates": [ 27.909108, -25.83927243 ] } },
+{ "type": "Feature", "properties": { "longitude": 24.03992058, "latitude": -30.71669313, "dataset": "power_grid", "color": "#23bea9" }, "geometry": { "type": "Point", "coordinates": [ 24.03992058, -30.71669313 ] } },
+{ "type": "Feature", "properties": { "longitude": 26.70706887, "latitude": -33.34734866, "dataset": "power_grid", "color": "#23bea9" }, "geometry": { "type": "Point", "coordinates": [ 26.70706887, -33.34734866 ] } },
+{ "type": "Feature", "properties": { "longitude": 31.07255012, "latitude": -24.03161199, "dataset": "power_grid", "color": "#23bea9" }, "geometry": { "type": "Point", "coordinates": [ 31.07255012, -24.03161199 ] } },
+{ "type": "Feature", "properties": { "longitude": 29.83959301, "latitude": -27.36216712, "dataset": "power_grid", "color": "#23bea9" }, "geometry": { "type": "Point", "coordinates": [ 29.83959301, -27.36216712 ] } },
+{ "type": "Feature", "properties": { "longitude": 26.18635963, "latitude": -29.1042753, "dataset": "power_grid", "color": "#23bea9" }, "geometry": { "type": "Point", "coordinates": [ 26.18635963, -29.1042753 ] } },
+{ "type": "Feature", "properties": { "longitude": 21.62203332, "latitude": -32.66458552, "dataset": "power_grid", "color": "#23bea9" }, "geometry": { "type": "Point", "coordinates": [ 21.62203332, -32.66458552 ] } },
+{ "type": "Feature", "properties": { "longitude": 19.79998146, "latitude": -29.37492851, "dataset": "power_grid", "color": "#23bea9" }, "geometry": { "type": "Point", "coordinates": [ 19.79998146, -29.37492851 ] } },
+{ "type": "Feature", "properties": { "longitude": 29.44905079, "latitude": -26.07884899, "dataset": "power_grid", "color": "#23bea9" }, "geometry": { "type": "Point", "coordinates": [ 29.44905079, -26.07884899 ] } },
+{ "type": "Feature", "properties": { "longitude": 30.88184153, "latitude": -30.02529052, "dataset": "power_grid", "color": "#23bea9" }, "geometry": { "type": "Point", "coordinates": [ 30.88184153, -30.02529052 ] } },
+{ "type": "Feature", "properties": { "longitude": 28.00187779, "latitude": -26.60065062, "dataset": "power_grid", "color": "#23bea9" }, "geometry": { "type": "Point", "coordinates": [ 28.00187779, -26.60065062 ] } },
+{ "type": "Feature", "properties": { "longitude": 28.96629976, "latitude": -23.98982544, "dataset": "power_grid", "color": "#23bea9" }, "geometry": { "type": "Point", "coordinates": [ 28.96629976, -23.98982544 ] } },
+{ "type": "Feature", "properties": { "longitude": 26.88444773, "latitude": -28.10383224, "dataset": "power_grid", "color": "#23bea9" }, "geometry": { "type": "Point", "coordinates": [ 26.88444773, -28.10383224 ] } },
+{ "type": "Feature", "properties": { "longitude": 30.95531584, "latitude": -28.12204683, "dataset": "power_grid", "color": "#23bea9" }, "geometry": { "type": "Point", "coordinates": [ 30.95531584, -28.12204683 ] } },
+{ "type": "Feature", "properties": { "longitude": 29.67511894, "latitude": -24.17030838, "dataset": "power_grid", "color": "#23bea9" }, "geometry": { "type": "Point", "coordinates": [ 29.67511894, -24.17030838 ] } },
+{ "type": "Feature", "properties": { "longitude": 29.91894605, "latitude": -22.31117908, "dataset": "power_grid", "color": "#23bea9" }, "geometry": { "type": "Point", "coordinates": [ 29.91894605, -22.31117908 ] } },
+{ "type": "Feature", "properties": { "longitude": 27.50807513, "latitude": -26.3700193, "dataset": "power_grid", "color": "#23bea9" }, "geometry": { "type": "Point", "coordinates": [ 27.50807513, -26.3700193 ] } }
+]
+}
